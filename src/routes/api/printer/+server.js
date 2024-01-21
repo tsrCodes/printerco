@@ -2,11 +2,11 @@ import { error } from '@sveltejs/kit';
 import net from 'node:net'
 import escpos from 'escpos';
 import escposNetwork from 'escpos-network';
-const device = new escposNetwork('192.168.1.100', 9100);
-const printer = new escpos.Printer(device);
 
 /** @type {import('./$types').RequestHandler} */
 export function GET({ url }) {
+    const device = new escposNetwork('192.168.1.100', 9100);
+    const printer = new escpos.Printer(device);
 
     device.open(function () {
         printer
